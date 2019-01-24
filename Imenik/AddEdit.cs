@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Imenik
 {
-    public partial class Form1 : Form
+    public partial class AddEdit : Form
     {
-        public Form1()
+        public AddEdit()
         {
             InitializeComponent();
         }

@@ -24,17 +24,30 @@ namespace Magic
         }
         public Magic(int userID)
         {
-
+           UserID = userID;
         }
         public Magic(int userID, string name, string username, string homeasress, int post, string city, int phonenumber, int emailaddress)
         {
-
+            UserID = userID;
+            Name = name;
+            Username = username;
+            HomeAdress = homeasress;
+            Post = post;
+            City = city;
+            PhoneNumber = phonenumber;
+            eMailAddress = emailaddress;
         }
         public Magic(int phonebookid, int userID, string name, string username, string homeasress, int post, string city, int phonenumber, int emailaddress)
         {
-
-        }
-
-
+            PhoneBookID = phonebookid;
+            UserID = userID;
+            Name = name;
+            Username = username;
+            HomeAdress = homeasress;
+            Post = post;
+            City = city;
+            PhoneNumber = phonenumber;
+            eMailAddress = emailaddress;
+        } 
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 using Magic;
 
 namespace Imenik
@@ -18,5 +19,24 @@ namespace Imenik
             InitializeComponent();
         }
 
+        private SQLiteConnection con;
+
+        private void SelectPhoneBookComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            con = new SQLiteConnection("datasource=Database.db");
+            con.Open();
+            using (SQLiteCommand com = new SQLiteCommand(con))
+            {
+                com.CommandText = "SELECT ime FROM imeniki";
+                SQLiteDataReader reader = com.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    SelectPhoneBookComboBox.Text = new phonebook(reader.GetString(1));
+                }
+                com.Dispose();
+                reader.Close();
+            }
+        }
     }
 }

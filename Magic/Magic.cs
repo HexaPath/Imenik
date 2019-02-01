@@ -26,6 +26,14 @@ namespace Magic
         {
            UserID = userID;
         }
+        public Magic(int userID, string name, string username, int phonenumber, int emailaddress)
+        {
+            UserID = userID;
+            Name = name;
+            Username = username;
+            PhoneNumber = phonenumber;
+            eMailAddress = emailaddress;
+        }
         public Magic(int userID, string name, string username, string homeasress, int post, string city, int phonenumber, int emailaddress)
         {
             UserID = userID;

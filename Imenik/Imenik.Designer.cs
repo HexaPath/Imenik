@@ -73,6 +73,7 @@
             this.SelectPhoneBookComboBox.Name = "SelectPhoneBookComboBox";
             this.SelectPhoneBookComboBox.Size = new System.Drawing.Size(472, 37);
             this.SelectPhoneBookComboBox.TabIndex = 0;
+            this.SelectPhoneBookComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectPhoneBookComboBox_SelectedIndexChanged);
             // 
             // label1
             // 

@@ -8,13 +8,13 @@ using System.Data.SQLite;
 namespace Magic
 {
     public class BlackBox
-    {
-        private SQLiteConnection con;
+    { 
 
         public BlackBox()
         {
-            con = new SQLiteConnection("datasource=Database.db");
-            con.Open();
+            
         }
+
+
     }
 }

@@ -32,7 +32,7 @@ namespace Imenik
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    SelectPhoneBookComboBox.Text = new phonebook(reader.GetString(1));
+                    SelectPhoneBookComboBox.Text = new Magic(reader.GetString(1));
                 }
                 com.Dispose();
                 reader.Close();

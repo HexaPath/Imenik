@@ -408,7 +408,7 @@
             this.Controls.Add(this.ImenikiGroupBox);
             this.Controls.Add(this.ImenikDataGrid);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "ImenikForm";
+            this.FirstName = "ImenikForm";
             this.Text = "Imenik";
             ((System.ComponentModel.ISupportInitialize)(this.ImenikDataGrid)).EndInit();
             this.ImenikiGroupBox.ResumeLayout(false);

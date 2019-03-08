@@ -33,13 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.AddPhoneBookTextBox = new System.Windows.Forms.TextBox();
             this.ImenikDataGrid = new System.Windows.Forms.DataGridView();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Priimek = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HisnaStevilka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Posta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kraj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefonska = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddPhoneBookBtn = new System.Windows.Forms.Button();
             this.PostTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,7 +40,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
-            this.SaveBtn = new System.Windows.Forms.Button();
+            this.AddBtn = new System.Windows.Forms.Button();
             this.eMailTextBox = new System.Windows.Forms.TextBox();
             this.PhoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.CityTextBox = new System.Windows.Forms.TextBox();
@@ -60,6 +53,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.ImenikiGroupBox = new System.Windows.Forms.GroupBox();
             this.UrejanjeOsebGroupBox = new System.Windows.Forms.GroupBox();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Priimek = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HisnaStevilka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Posta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kraj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelefonskaStevilka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ImenikDataGrid)).BeginInit();
             this.ImenikiGroupBox.SuspendLayout();
             this.UrejanjeOsebGroupBox.SuspendLayout();
@@ -71,7 +71,7 @@
             this.SelectPhoneBookComboBox.FormattingEnabled = true;
             this.SelectPhoneBookComboBox.Location = new System.Drawing.Point(173, 10);
             this.SelectPhoneBookComboBox.Name = "SelectPhoneBookComboBox";
-            this.SelectPhoneBookComboBox.Size = new System.Drawing.Size(472, 37);
+            this.SelectPhoneBookComboBox.Size = new System.Drawing.Size(326, 37);
             this.SelectPhoneBookComboBox.TabIndex = 0;
             this.SelectPhoneBookComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectPhoneBookComboBox_SelectedIndexChanged);
             // 
@@ -89,7 +89,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(759, 14);
+            this.label2.Location = new System.Drawing.Point(530, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 29);
             this.label2.TabIndex = 2;
@@ -98,7 +98,7 @@
             // AddPhoneBookTextBox
             // 
             this.AddPhoneBookTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.AddPhoneBookTextBox.Location = new System.Drawing.Point(921, 11);
+            this.AddPhoneBookTextBox.Location = new System.Drawing.Point(681, 12);
             this.AddPhoneBookTextBox.Name = "AddPhoneBookTextBox";
             this.AddPhoneBookTextBox.Size = new System.Drawing.Size(291, 34);
             this.AddPhoneBookTextBox.TabIndex = 3;
@@ -112,60 +112,18 @@
             this.HisnaStevilka,
             this.Posta,
             this.Kraj,
-            this.Telefonska,
-            this.Mail});
+            this.TelefonskaStevilka,
+            this.eMail});
             this.ImenikDataGrid.Location = new System.Drawing.Point(13, 69);
             this.ImenikDataGrid.Name = "ImenikDataGrid";
             this.ImenikDataGrid.RowTemplate.Height = 24;
-            this.ImenikDataGrid.Size = new System.Drawing.Size(863, 500);
+            this.ImenikDataGrid.Size = new System.Drawing.Size(1078, 449);
             this.ImenikDataGrid.TabIndex = 4;
-            // 
-            // Ime
-            // 
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
-            // Priimek
-            // 
-            this.Priimek.HeaderText = "Priimek";
-            this.Priimek.Name = "Priimek";
-            this.Priimek.ReadOnly = true;
-            // 
-            // HisnaStevilka
-            // 
-            this.HisnaStevilka.HeaderText = "Hišna Številka";
-            this.HisnaStevilka.Name = "HisnaStevilka";
-            this.HisnaStevilka.ReadOnly = true;
-            // 
-            // Posta
-            // 
-            this.Posta.HeaderText = "Pošta";
-            this.Posta.Name = "Posta";
-            this.Posta.ReadOnly = true;
-            // 
-            // Kraj
-            // 
-            this.Kraj.HeaderText = "Kraj";
-            this.Kraj.Name = "Kraj";
-            this.Kraj.ReadOnly = true;
-            // 
-            // Telefonska
-            // 
-            this.Telefonska.HeaderText = "Telefonska";
-            this.Telefonska.Name = "Telefonska";
-            this.Telefonska.ReadOnly = true;
-            // 
-            // Mail
-            // 
-            this.Mail.HeaderText = "Mail";
-            this.Mail.Name = "Mail";
-            this.Mail.ReadOnly = true;
             // 
             // AddPhoneBookBtn
             // 
             this.AddPhoneBookBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.AddPhoneBookBtn.Location = new System.Drawing.Point(1218, 9);
+            this.AddPhoneBookBtn.Location = new System.Drawing.Point(978, 12);
             this.AddPhoneBookBtn.Name = "AddPhoneBookBtn";
             this.AddPhoneBookBtn.Size = new System.Drawing.Size(100, 38);
             this.AddPhoneBookBtn.TabIndex = 6;
@@ -175,7 +133,7 @@
             // PostTextBox
             // 
             this.PostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PostTextBox.Location = new System.Drawing.Point(99, 133);
+            this.PostTextBox.Location = new System.Drawing.Point(569, 48);
             this.PostTextBox.Name = "PostTextBox";
             this.PostTextBox.Size = new System.Drawing.Size(356, 34);
             this.PostTextBox.TabIndex = 37;
@@ -184,7 +142,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(6, 138);
+            this.label8.Location = new System.Drawing.Point(476, 53);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 29);
             this.label8.TabIndex = 36;
@@ -193,7 +151,7 @@
             // HomeAddressTextBox
             // 
             this.HomeAddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.HomeAddressTextBox.Location = new System.Drawing.Point(184, 93);
+            this.HomeAddressTextBox.Location = new System.Drawing.Point(654, 8);
             this.HomeAddressTextBox.Name = "HomeAddressTextBox";
             this.HomeAddressTextBox.Size = new System.Drawing.Size(271, 34);
             this.HomeAddressTextBox.TabIndex = 35;
@@ -202,18 +160,18 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(6, 98);
+            this.label7.Location = new System.Drawing.Point(476, 13);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(172, 29);
             this.label7.TabIndex = 34;
-            this.label7.Text = "HIšna številka :";
+            this.label7.Text = "Hišna številka :";
             // 
             // DeleteBtn
             // 
             this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.DeleteBtn.Location = new System.Drawing.Point(6, 293);
+            this.DeleteBtn.Location = new System.Drawing.Point(931, 124);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(145, 35);
+            this.DeleteBtn.Size = new System.Drawing.Size(145, 53);
             this.DeleteBtn.TabIndex = 33;
             this.DeleteBtn.Text = "Izbriši";
             this.DeleteBtn.UseVisualStyleBackColor = true;
@@ -221,27 +179,27 @@
             // UpdateBtn
             // 
             this.UpdateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.UpdateBtn.Location = new System.Drawing.Point(159, 293);
+            this.UpdateBtn.Location = new System.Drawing.Point(931, 65);
             this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(145, 35);
+            this.UpdateBtn.Size = new System.Drawing.Size(145, 53);
             this.UpdateBtn.TabIndex = 32;
             this.UpdateBtn.Text = "Posodobi";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             // 
-            // SaveBtn
+            // AddBtn
             // 
-            this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.SaveBtn.Location = new System.Drawing.Point(310, 293);
-            this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(145, 35);
-            this.SaveBtn.TabIndex = 31;
-            this.SaveBtn.Text = "Shrani";
-            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AddBtn.Location = new System.Drawing.Point(931, 6);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(145, 53);
+            this.AddBtn.TabIndex = 31;
+            this.AddBtn.Text = "Dodaj";
+            this.AddBtn.UseVisualStyleBackColor = true;
             // 
             // eMailTextBox
             // 
             this.eMailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.eMailTextBox.Location = new System.Drawing.Point(99, 253);
+            this.eMailTextBox.Location = new System.Drawing.Point(99, 146);
             this.eMailTextBox.Name = "eMailTextBox";
             this.eMailTextBox.Size = new System.Drawing.Size(356, 34);
             this.eMailTextBox.TabIndex = 30;
@@ -249,7 +207,7 @@
             // PhoneNumberTextBox
             // 
             this.PhoneNumberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.PhoneNumberTextBox.Location = new System.Drawing.Point(166, 213);
+            this.PhoneNumberTextBox.Location = new System.Drawing.Point(166, 106);
             this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             this.PhoneNumberTextBox.Size = new System.Drawing.Size(289, 34);
             this.PhoneNumberTextBox.TabIndex = 29;
@@ -257,7 +215,7 @@
             // CityTextBox
             // 
             this.CityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CityTextBox.Location = new System.Drawing.Point(80, 173);
+            this.CityTextBox.Location = new System.Drawing.Point(550, 88);
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.Size = new System.Drawing.Size(375, 34);
             this.CityTextBox.TabIndex = 28;
@@ -282,7 +240,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(7, 258);
+            this.label5.Location = new System.Drawing.Point(7, 151);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 29);
             this.label5.TabIndex = 23;
@@ -292,7 +250,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(7, 218);
+            this.label4.Location = new System.Drawing.Point(7, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(153, 29);
             this.label4.TabIndex = 22;
@@ -302,7 +260,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(6, 178);
+            this.label3.Location = new System.Drawing.Point(476, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 29);
             this.label3.TabIndex = 21;
@@ -358,21 +316,63 @@
             this.UrejanjeOsebGroupBox.Controls.Add(this.SurnameTextBox);
             this.UrejanjeOsebGroupBox.Controls.Add(this.UpdateBtn);
             this.UrejanjeOsebGroupBox.Controls.Add(this.CityTextBox);
-            this.UrejanjeOsebGroupBox.Controls.Add(this.SaveBtn);
+            this.UrejanjeOsebGroupBox.Controls.Add(this.AddBtn);
             this.UrejanjeOsebGroupBox.Controls.Add(this.PhoneNumberTextBox);
             this.UrejanjeOsebGroupBox.Controls.Add(this.eMailTextBox);
-            this.UrejanjeOsebGroupBox.Location = new System.Drawing.Point(882, 69);
+            this.UrejanjeOsebGroupBox.Location = new System.Drawing.Point(12, 524);
             this.UrejanjeOsebGroupBox.Name = "UrejanjeOsebGroupBox";
-            this.UrejanjeOsebGroupBox.Size = new System.Drawing.Size(459, 500);
+            this.UrejanjeOsebGroupBox.Size = new System.Drawing.Size(1079, 186);
             this.UrejanjeOsebGroupBox.TabIndex = 39;
             this.UrejanjeOsebGroupBox.TabStop = false;
             this.UrejanjeOsebGroupBox.Text = "Urejanje Oseb";
+            // 
+            // Ime
+            // 
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Priimek
+            // 
+            this.Priimek.HeaderText = "Priimek";
+            this.Priimek.Name = "Priimek";
+            this.Priimek.ReadOnly = true;
+            // 
+            // HisnaStevilka
+            // 
+            this.HisnaStevilka.HeaderText = "Hišna Številka";
+            this.HisnaStevilka.Name = "HisnaStevilka";
+            this.HisnaStevilka.ReadOnly = true;
+            // 
+            // Posta
+            // 
+            this.Posta.HeaderText = "Pošta";
+            this.Posta.Name = "Posta";
+            this.Posta.ReadOnly = true;
+            // 
+            // Kraj
+            // 
+            this.Kraj.HeaderText = "Kraj";
+            this.Kraj.Name = "Kraj";
+            this.Kraj.ReadOnly = true;
+            // 
+            // TelefonskaStevilka
+            // 
+            this.TelefonskaStevilka.HeaderText = "Telefonska številka";
+            this.TelefonskaStevilka.Name = "TelefonskaStevilka";
+            this.TelefonskaStevilka.ReadOnly = true;
+            // 
+            // eMail
+            // 
+            this.eMail.HeaderText = "eMail";
+            this.eMail.Name = "eMail";
+            this.eMail.ReadOnly = true;
             // 
             // ImenikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 581);
+            this.ClientSize = new System.Drawing.Size(1105, 717);
             this.Controls.Add(this.UrejanjeOsebGroupBox);
             this.Controls.Add(this.ImenikiGroupBox);
             this.Controls.Add(this.ImenikDataGrid);
@@ -395,20 +395,13 @@
         private System.Windows.Forms.TextBox AddPhoneBookTextBox;
         private System.Windows.Forms.DataGridView ImenikDataGrid;
         private System.Windows.Forms.Button AddPhoneBookBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Priimek;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HisnaStevilka;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Posta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kraj;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefonska;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.TextBox PostTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox HomeAddressTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Button UpdateBtn;
-        private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.TextBox eMailTextBox;
         private System.Windows.Forms.TextBox PhoneNumberTextBox;
         private System.Windows.Forms.TextBox CityTextBox;
@@ -421,6 +414,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox ImenikiGroupBox;
         private System.Windows.Forms.GroupBox UrejanjeOsebGroupBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Priimek;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HisnaStevilka;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Posta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kraj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TelefonskaStevilka;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eMail;
     }
 }
 

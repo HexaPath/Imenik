@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Magic
+namespace BlackBox
 {
-    public class Magic
+    public class Oseba
     {
         public int UserID { get; set; }
-        public string PhoneBook { get; set; }
+        public int PhoneBook_id { get; set; }
         public string Name { get; set; }
         public string Username { get; set; }
         public string HomeAdress { get; set; }
@@ -18,26 +18,12 @@ namespace Magic
         public int PhoneNumber { get; set; }
         public int eMailAddress { get; set; }
 
-        public Magic()
-        {
-
-        }
-
-        public Magic(int userID)
-        {
-           UserID = userID;
-        }
-
-        public Magic(int userID, string name, string username, int phonenumber, int emailaddress)
+        public Oseba(int userID)
         {
             UserID = userID;
-            Name = name;
-            Username = username;
-            PhoneNumber = phonenumber;
-            eMailAddress = emailaddress;
         }
 
-        public Magic(int userID, string name, string username, string homeasress, int post, string city, int phonenumber, int emailaddress)
+        public Oseba(int userID, string name, string username, string homeasress, int post, string city, int phonenumber, int emailaddress)
         {
             UserID = userID;
             Name = name;
@@ -49,9 +35,9 @@ namespace Magic
             eMailAddress = emailaddress;
         }
 
-        public Magic(string phonebook, int userID, string name, string username, string homeasress, int post, string city, int phonenumber, int emailaddress)
+        public Oseba(int phonebook_id, int userID, string name, string username, string homeasress, int post, string city, int phonenumber, int emailaddress)
         {
-            PhoneBook = phonebook;
+            PhoneBook_id = phonebook_id;
             UserID = userID;
             Name = name;
             Username = username;
@@ -60,6 +46,17 @@ namespace Magic
             City = city;
             PhoneNumber = phonenumber;
             eMailAddress = emailaddress;
-        } 
+        }
     }
+
+    public class Imeniki //database
+    {
+        public int PhoneBook_id { get; set; }
+        public string PhoneBook { get; set; }
+    }
+
 }
+        
+
+
+

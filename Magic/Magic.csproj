@@ -59,7 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlackBox.cs" />
     <Compile Include="Magic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

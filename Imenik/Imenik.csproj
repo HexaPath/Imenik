@@ -99,9 +99,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Magic\Magic.csproj">
-      <Project>{c68a23b3-3a86-49bb-b1ce-0caf0628bea8}</Project>
-      <Name>Magic</Name>
+    <ProjectReference Include="..\BlackBox\BlackBox.csproj">
+      <Project>{2d76ae43-fa10-4f51-bb3e-7b672335c0dc}</Project>
+      <Name>BlackBox</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

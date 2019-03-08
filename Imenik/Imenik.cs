@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data.SQLite;
+
 namespace Imenik
 {
     public partial class ImenikForm : Form
@@ -10,23 +10,29 @@ namespace Imenik
             InitializeComponent();
         }
         
-        private SQLiteConnection con;
-
         private void SelectPhoneBookComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            con = new SQLiteConnection("datasource=Database.db");
-            con.Open();
-            using (SQLiteCommand com = new SQLiteCommand(con))
-            {
-                com.CommandText = "SELECT ime FROM imeniki";
-                SQLiteDataReader reader = com.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                }
-                com.Dispose();
-                reader.Close();
-            }
-        } 
+            // Iz baze izpiše vse imenike
+        }
+
+        private void AddPhoneBookBtn_Click(object sender, EventArgs e)
+        {
+            // v bazo vpiše imenik
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            // v bazo vpiše vse podatke osebe, v imenik, ki je trenutno izbran
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            // v bazi posodobi podatke osebe
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            // v bazi izbriše osebo
+        }
     }
 }

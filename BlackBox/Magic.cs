@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace BlackBox
 {
@@ -51,10 +52,33 @@ namespace BlackBox
 
     public class Imeniki //database
     {
+        private SQLiteConnection con;
         public int PhoneBook_id { get; set; }
         public string PhoneBook { get; set; }
     }
 
+    
+        
+    /*
+        public int populate(int phonebook_id, string phonebook)
+        {
+            PhoneBook_id = phonebook_id;
+            con = new SQLiteConnection("datasource=Database.db");
+            con.Open();
+            using (SQLiteCommand com = new SQLiteCommand(con))
+            {
+                com.CommandText = "SELECT ime FROM imeniki";
+                SQLiteDataReader reader = com.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                }
+                com.Dispose();
+                reader.Close();
+                return 0;
+            } 
+        }
+    */
 }
         
 

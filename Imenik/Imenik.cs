@@ -13,6 +13,7 @@ namespace Imenik
 
         int UserID = 0; // dobi od izbranega objekta 
         int PhoneBook_id = 0; // dobi iz globlane spremenljivke, ki pove, ker id phonebook je trenutno odprt 
+        string PhoneBook = "";// dobi iz baze
         string FirstName = "";
         string LastName = "";
         string HomeAdress = ""; 
@@ -31,30 +32,34 @@ namespace Imenik
             // Iz baze izpiše vse imenike
         }
 
-        private void AddPhoneBookBtn_Click(object sender, EventArgs e)
-        {
-            // v bazo vpiše imenik
-        }
+        
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            action = 1;
-            // v bazo vpiše vse podatke osebe, v imenik, ki je trenutno izbran
+            action = 1;     // v bazo vpiše vse podatke osebe, v imenik, ki je trenutno izbran
+            VpisVBazo();
         }
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            action = 2;
-            // v bazi posodobi podatke osebe, ki je trenutno izbrana
+            action = 2;     // v bazi posodobi podatke osebe, ki je trenutno izbrana
+            VpisVBazo();
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            Oseba oseba = new Oseba(UserID); 
-            // v bazi izbriše osebo
+        { 
+            action = 3;     // v bazi izbriše osebo
+            VpisVBazo();
+           
         }
 
-        private void VpisOsebVBazo ()
+        private void AddPhoneBookBtn_Click(object sender, EventArgs e)
+        {
+            action = 4;
+            VpisVBazo();    // v bazo vpiše imenik
+        }
+
+        private void VpisVBazo ()
         {
             FirstName = NameTextBox.Text;
             LastName = SurnameTextBox.Text;
@@ -63,17 +68,51 @@ namespace Imenik
             City = CityTextBox.Text;
             PhoneNumber = Convert.ToInt32(PhoneNumberTextBox.Text);
             eMailAddress = eMailTextBox.Text;
-            Oseba oseba = new Oseba(PhoneBook_id, UserID, FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress);
+            PhoneBook = AddPhoneBookTextBox.Text;
+            Oseba newOseba = new Oseba(UserID);
+            Oseba newOseba1 = new Oseba(PhoneBook_id, UserID, FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress);
+            Oseba newOseba2 = new Oseba(PhoneBook_id, FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress); 
+            Imeniki newImenik = new Imeniki(PhoneBook_id, PhoneBook);
 
-            switch(action)
+            switch (action)
             {
-                case 1: 
+                case 1:
+                    Database DodajOsebo = new Database();
+                    if(DodajOsebo.AddOseba(newOseba2) == true)
+                    {
+                        MessageBox.Show("Entery Successful!");
+                    }
                     // stavek za klic insert funkcije baze
                     break;
                 case 2:
+                    Database UrediOsebo = new Database();
+                    if(UrediOsebo.UpdateOseba(newOseba1) == true)
+                    {
+                        MessageBox.Show("Edit Successful!");
+                    }
                     // stavek za klic update funkcije baze
                     break;
+                case 3:
+                    Database izbrisOsebe = new Database();
+                    if (izbrisOsebe.DeleteOseba(newOseba) == true)
+                    {
+                        MessageBox.Show("Removal Successful!");
+                    }
+                    break;
+                case 4:
+                    Database DodajImenik = new Database();
+                    if(DodajImenik.AddImenik(newImenik) == true)
+                    {
+                        MessageBox.Show("Entery Successful!");
+                    }
+                    break;
             }
+            refresh();
+        }
+
+        private void refresh()
+        {
+
         }
     }
 }

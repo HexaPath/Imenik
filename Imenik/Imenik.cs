@@ -16,11 +16,12 @@ namespace Imenik
         string PhoneBook = "";// dobi iz baze
         string FirstName = "";
         string LastName = "";
-        string HomeAdress = ""; 
+        string HomeAdress = "";
+        string eMailAddress = "";
         string City = "";
         int Post = 0000;
         int PhoneNumber = 000000000;
-        string eMailAddress = "";
+        
         int action = 0;
 
         /// <summary>
@@ -61,22 +62,55 @@ namespace Imenik
 
         private void VpisVBazo ()
         {
-            FirstName = NameTextBox.Text;
-            LastName = SurnameTextBox.Text;
-            HomeAdress = HomeAddressTextBox.Text;
-            Post = Convert.ToInt32(PostTextBox.Text);
-            City = CityTextBox.Text;
-            PhoneNumber = Convert.ToInt32(PhoneNumberTextBox.Text);
-            eMailAddress = eMailTextBox.Text;
-            PhoneBook = AddPhoneBookTextBox.Text;
+            if (NameTextBox.Text != "" || NameTextBox.Text != null)
+            {
+                FirstName = NameTextBox.Text;
+            }
+            else { FirstName = "";}
+            if (SurnameTextBox.Text != "" || SurnameTextBox.Text != null)
+            {
+                LastName = SurnameTextBox.Text;
+            }
+            else { LastName = "";}
+            if (HomeAddressTextBox.Text != "" || HomeAddressTextBox.Text != null)
+            {
+                HomeAdress = HomeAddressTextBox.Text;
+            }
+            else { HomeAdress = "";}
+            if (PostTextBox.Text != "" || PostTextBox.Text != null)
+            {
+                Post = Convert.ToInt32(PostTextBox.Text);
+            }
+            else { Post = 0000; }
+            if (CityTextBox.Text != "" || CityTextBox.Text != null)
+            {
+                City = CityTextBox.Text;
+            }
+            else { City = ""; }
+            if (PhoneNumberTextBox.Text != "" || PhoneNumberTextBox.Text != null)
+            {
+                PhoneNumber = Convert.ToInt32(PhoneNumberTextBox.Text);
+            }
+            else { PhoneNumber = 000000000;}
+            if (eMailTextBox.Text != "" || eMailTextBox.Text != null)
+            {
+                eMailAddress = eMailTextBox.Text;
+            }
+            else { eMailAddress = "";}
+            if (AddPhoneBookTextBox.Text != "" || AddPhoneBookTextBox.Text != null)
+            {
+                PhoneBook = AddPhoneBookTextBox.Text; 
+            }
+            else { PhoneBook = ""; }
+            
             Oseba newOseba = new Oseba(UserID);
-            Oseba newOseba1 = new Oseba(PhoneBook_id, UserID, FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress);
-            Oseba newOseba2 = new Oseba(PhoneBook_id, FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress); 
+            Oseba newOseba1 = new Oseba(UserID, FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress,PhoneBook_id);
+            Oseba newOseba2 = new Oseba(FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress, PhoneBook_id); 
             Imeniki newImenik = new Imeniki(PhoneBook_id, PhoneBook);
 
             switch (action)
             {
-                case 1:
+                case 1: //Zatakne se tlele
                     Database DodajOsebo = new Database();
                     if(DodajOsebo.AddOseba(newOseba2) == true)
                     {

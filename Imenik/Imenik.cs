@@ -32,9 +32,7 @@ namespace Imenik
         {
             // Iz baze izpiše vse imenike
         }
-
         
-
         private void AddBtn_Click(object sender, EventArgs e)
         {
             action = 1;     // v bazo vpiše vse podatke osebe, v imenik, ki je trenutno izbran
@@ -111,6 +109,7 @@ namespace Imenik
             switch (action)
             {
                 case 1: //Zatakne se tlele
+                    MessageBox.Show("ShowUp");
                     Database DodajOsebo = new Database();
                     if(DodajOsebo.AddOseba(newOseba2) == true)
                     {

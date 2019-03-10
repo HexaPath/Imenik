@@ -171,15 +171,20 @@ namespace Imenik
         {
             try
             {
+                string ID = "";
                 MessageBox.Show("NOTR SM PRIŠU");
-                NameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Ime"].Value.ToString();
+                ID = ImenikDataGrid.SelectedRows[0].Cells["ID"].Value.ToString();
+
                 MessageBox.Show("EVO");
-                SurnameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Priimek"].Value.ToString(); 
-                HomeAddressTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["HisnaStevilka"].Value.ToString(); 
-                PostTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Posta"].Value.ToString(); 
-                CityTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["City"].Value.ToString(); 
-                PhoneNumberTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["TelefonskaStevilka"].Value.ToString(); 
-                eMailTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["eMail"].Value.ToString();                
+                NameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Ime"].Value.ToString();
+                SurnameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Priimek"].Value.ToString();
+                HomeAddressTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["HisnaStevilka"].Value.ToString();
+                PostTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Posta"].Value.ToString();
+                CityTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["City"].Value.ToString();
+                PhoneNumberTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["TelefonskaStevilka"].Value.ToString();
+                eMailTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["eMail"].Value.ToString();
+
+                UserID = Convert.ToInt32(ID);
             }
             catch (Exception ex) // If... if somethings goes wrong
             {
@@ -199,13 +204,14 @@ namespace Imenik
             foreach (DataRow oseba in table.Rows)    //  Instant Output of Input :D
             {
                 int x = ImenikDataGrid.Rows.Add();
-                ImenikDataGrid.Rows[x].Cells[0].Value = oseba[1].ToString();
-                ImenikDataGrid.Rows[x].Cells[1].Value = oseba[2].ToString();
-                ImenikDataGrid.Rows[x].Cells[2].Value = oseba[3].ToString();
-                ImenikDataGrid.Rows[x].Cells[3].Value = oseba[4].ToString();
-                ImenikDataGrid.Rows[x].Cells[4].Value = oseba[5].ToString();
-                ImenikDataGrid.Rows[x].Cells[5].Value = oseba[6].ToString();
-                ImenikDataGrid.Rows[x].Cells[6].Value = oseba[7].ToString();
+                ImenikDataGrid.Rows[x].Cells[0].Value = oseba[0].ToString();
+                ImenikDataGrid.Rows[x].Cells[1].Value = oseba[1].ToString();
+                ImenikDataGrid.Rows[x].Cells[2].Value = oseba[2].ToString();
+                ImenikDataGrid.Rows[x].Cells[3].Value = oseba[3].ToString();
+                ImenikDataGrid.Rows[x].Cells[4].Value = oseba[4].ToString();
+                ImenikDataGrid.Rows[x].Cells[5].Value = oseba[5].ToString();
+                ImenikDataGrid.Rows[x].Cells[6].Value = oseba[6].ToString();
+                ImenikDataGrid.Rows[x].Cells[7].Value = oseba[7].ToString();
             }
             con.Close();
         }

@@ -171,10 +171,17 @@ namespace Imenik
         {
             try
             {
+                if (ImenikDataGrid.SelectedCells.Count > 0) // To dela - vrača cell
+                {
+                    string id = ImenikDataGrid.SelectedCells[0].Value.ToString();
+                    MessageBox.Show(id);
+                }
+                 // To naprej pa ne - vrača row, pa vsak cell pol posebi
                 string ID = "";
                 MessageBox.Show("NOTR SM PRIŠU");
-                ID = ImenikDataGrid.SelectedRows[0].Cells["ID"].Value.ToString();
 
+                ID = ImenikDataGrid.SelectedRows[0].Cells["ID"].Value.ToString();
+                UserID = Convert.ToInt32(ID);
                 MessageBox.Show("EVO");
                 NameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Ime"].Value.ToString();
                 SurnameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Priimek"].Value.ToString();
@@ -182,9 +189,7 @@ namespace Imenik
                 PostTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Posta"].Value.ToString();
                 CityTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["City"].Value.ToString();
                 PhoneNumberTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["TelefonskaStevilka"].Value.ToString();
-                eMailTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["eMail"].Value.ToString();
-
-                UserID = Convert.ToInt32(ID);
+                eMailTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["eMail"].Value.ToString(); 
             }
             catch (Exception ex) // If... if somethings goes wrong
             {

@@ -60,47 +60,52 @@ namespace Imenik
 
         private void VpisVBazo ()
         {
-            if (NameTextBox.Text != "" || NameTextBox.Text != null)
-            {
-                FirstName = NameTextBox.Text;
+            if(action ==4)
+            { 
+                if (AddPhoneBookTextBox.Text != "" || AddPhoneBookTextBox.Text != null)
+                {
+                    PhoneBook = AddPhoneBookTextBox.Text;
+                }
+                else { PhoneBook = ""; }
             }
-            else { FirstName = "";}
-            if (SurnameTextBox.Text != "" || SurnameTextBox.Text != null)
-            {
-                LastName = SurnameTextBox.Text;
+            else { 
+                if (NameTextBox.Text != "" || NameTextBox.Text != null)
+                {
+                    FirstName = NameTextBox.Text;
+                }
+                else { FirstName = "";}
+                if (SurnameTextBox.Text != "" || SurnameTextBox.Text != null)
+                {
+                    LastName = SurnameTextBox.Text;
+                }
+                else { LastName = "";}
+                if (HomeAddressTextBox.Text != "" || HomeAddressTextBox.Text != null)
+                {
+                    HomeAdress = HomeAddressTextBox.Text;
+                }
+                else { HomeAdress = "";}
+                if (PostTextBox.Text != "" || PostTextBox.Text != null)
+                {
+                    Post = Convert.ToInt32(PostTextBox.Text);
+                }
+                else { Post = 0000; }
+                if (CityTextBox.Text != "" || CityTextBox.Text != null)
+                {
+                    City = CityTextBox.Text;
+                }
+                else { City = ""; }
+                if (PhoneNumberTextBox.Text != "" || PhoneNumberTextBox.Text != null)
+                {
+                    PhoneNumber = Convert.ToInt32(PhoneNumberTextBox.Text);
+                }
+                else { PhoneNumber = 000000000;}
+                if (eMailTextBox.Text != "" || eMailTextBox.Text != null)
+                {
+                    eMailAddress = eMailTextBox.Text;
+                }
+                else { eMailAddress = "";}
             }
-            else { LastName = "";}
-            if (HomeAddressTextBox.Text != "" || HomeAddressTextBox.Text != null)
-            {
-                HomeAdress = HomeAddressTextBox.Text;
-            }
-            else { HomeAdress = "";}
-            if (PostTextBox.Text != "" || PostTextBox.Text != null)
-            {
-                Post = Convert.ToInt32(PostTextBox.Text);
-            }
-            else { Post = 0000; }
-            if (CityTextBox.Text != "" || CityTextBox.Text != null)
-            {
-                City = CityTextBox.Text;
-            }
-            else { City = ""; }
-            if (PhoneNumberTextBox.Text != "" || PhoneNumberTextBox.Text != null)
-            {
-                PhoneNumber = Convert.ToInt32(PhoneNumberTextBox.Text);
-            }
-            else { PhoneNumber = 000000000;}
-            if (eMailTextBox.Text != "" || eMailTextBox.Text != null)
-            {
-                eMailAddress = eMailTextBox.Text;
-            }
-            else { eMailAddress = "";}
-            if (AddPhoneBookTextBox.Text != "" || AddPhoneBookTextBox.Text != null)
-            {
-                PhoneBook = AddPhoneBookTextBox.Text; 
-            }
-            else { PhoneBook = ""; }
-            
+
             Oseba newOseba = new Oseba(UserID);
             Oseba newOseba1 = new Oseba(UserID, FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress,PhoneBook_id);
             Oseba newOseba2 = new Oseba(FirstName, LastName, HomeAdress, Post, City, PhoneNumber, eMailAddress, PhoneBook_id); 
@@ -145,7 +150,7 @@ namespace Imenik
 
         private void refresh()
         {
-
+            MessageBox.Show("Refresh");
         }
     }
 }

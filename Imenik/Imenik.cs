@@ -150,7 +150,18 @@ namespace Imenik
 
         private void refresh()
         {
+            AddPhoneBookTextBox.Text = "";
+            NameTextBox.Text = "";
+            SurnameTextBox.Text = "";
+            HomeAddressTextBox.Text ="";
+            PostTextBox.Text ="";
+            CityTextBox.Text ="";
+            PhoneNumberTextBox.Text ="";
+            eMailTextBox.Text ="";
+
             MessageBox.Show("Refresh");
+
+
         }
     }
 }

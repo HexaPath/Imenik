@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data;
+using System.Data; 
 using System.Data.SQLite;
 using BlackBox;
 
@@ -11,11 +11,11 @@ namespace Imenik
         public ImenikForm()
         {
             InitializeComponent();
-            Display();
+            Dropdown();
         }
 
         int UserID = 0; // dobi od izbranega objekta 
-        int PhoneBook_id = 0; // dobi iz globlane spremenljivke, ki pove, ker id phonebook je trenutno odprt 
+        int PhoneBook_id = -1; // dobi iz globlane spremenljivke, ki pove, ker id phonebook je trenutno odprt 
         string PhoneBook = "";// dobi iz baze
         string FirstName = "";
         string LastName = "";
@@ -24,17 +24,14 @@ namespace Imenik
         string City = "";
         int Post = 0000;
         int PhoneNumber = 000000000;
-        
+
         int action = 0;
 
         /// <summary>
         /// IMENIK : možno je imeti več različnih imenikov.
         /// </summary>
-
-        private void SelectPhoneBookComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Iz baze izpiše vse imenike
-        }
+        /// 
+        
         
         private void AddBtn_Click(object sender, EventArgs e)
         {
@@ -117,11 +114,11 @@ namespace Imenik
             switch (action)
             {
                 case 1: //Zatakne se tlele
-                    MessageBox.Show("ShowUp");
+                    //MessageBox.Show("ShowUp");
                     Database DodajOsebo = new Database();
                     if(DodajOsebo.AddOseba(newOseba2) == true)
                     {
-                        MessageBox.Show("Entery Successful!");
+                        //MessageBox.Show("Entery Successful!");
                     }
                     // stavek za klic insert funkcije baze
                     break;
@@ -129,7 +126,7 @@ namespace Imenik
                     Database UrediOsebo = new Database();
                     if(UrediOsebo.UpdateOseba(newOseba1) == true)
                     {
-                        MessageBox.Show("Edit Successful!");
+                        //MessageBox.Show("Edit Successful!");
                     }
                     // stavek za klic update funkcije baze
                     break;
@@ -137,14 +134,14 @@ namespace Imenik
                     Database izbrisOsebe = new Database();
                     if (izbrisOsebe.DeleteOseba(newOseba) == true)
                     {
-                        MessageBox.Show("Removal Successful!");
+                        //MessageBox.Show("Removal Successful!");
                     }
                     break;
                 case 4:
                     Database DodajImenik = new Database();
                     if(DodajImenik.AddImenik(newImenik) == true)
                     {
-                        MessageBox.Show("Entery Successful!");
+                        //MessageBox.Show("Entery Successful!");
                     }
                     break;
             }
@@ -161,35 +158,26 @@ namespace Imenik
             CityTextBox.Text ="";
             PhoneNumberTextBox.Text ="";
             eMailTextBox.Text ="";
-
-            MessageBox.Show("Refresh");
-
-
+            Display();
         }
 
         private void ImenikDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (ImenikDataGrid.SelectedCells.Count > 0) // To dela - vrača cell
+                if (ImenikDataGrid.CurrentRow != null && ImenikDataGrid.CurrentRow.Index > -1)
                 {
-                    string id = ImenikDataGrid.SelectedCells[0].Value.ToString();
-                    MessageBox.Show(id);
+                    string ID = "";
+                    ID = ImenikDataGrid.CurrentRow.Cells[0].Value != null ? ImenikDataGrid.CurrentRow.Cells[0].Value.ToString() : "";
+                    NameTextBox.Text = ImenikDataGrid.CurrentRow.Cells[1].Value != null ? ImenikDataGrid.CurrentRow.Cells[1].Value.ToString() : "";
+                    SurnameTextBox.Text = ImenikDataGrid.CurrentRow.Cells[2].Value != null ? ImenikDataGrid.CurrentRow.Cells[2].Value.ToString() : "";
+                    HomeAddressTextBox.Text = ImenikDataGrid.CurrentRow.Cells[3].Value != null ? ImenikDataGrid.CurrentRow.Cells[3].Value.ToString() : "";
+                    PostTextBox.Text = ImenikDataGrid.CurrentRow.Cells[4].Value != null ? ImenikDataGrid.CurrentRow.Cells[4].Value.ToString() : "";
+                    CityTextBox.Text = ImenikDataGrid.CurrentRow.Cells[5].Value != null ? ImenikDataGrid.CurrentRow.Cells[5].Value.ToString() : "";
+                    PhoneNumberTextBox.Text = ImenikDataGrid.CurrentRow.Cells[6].Value != null ? ImenikDataGrid.CurrentRow.Cells[6].Value.ToString() : "";
+                    eMailTextBox.Text = ImenikDataGrid.CurrentRow.Cells[7].Value != null ? ImenikDataGrid.CurrentRow.Cells[7].Value.ToString() : ""; 
+                    UserID = Convert.ToInt32(ID);
                 }
-                 // To naprej pa ne - vrača row, pa vsak cell pol posebi
-                string ID = "";
-                MessageBox.Show("NOTR SM PRIŠU");
-
-                ID = ImenikDataGrid.SelectedRows[0].Cells["ID"].Value.ToString();
-                UserID = Convert.ToInt32(ID);
-                MessageBox.Show("EVO");
-                NameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Ime"].Value.ToString();
-                SurnameTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Priimek"].Value.ToString();
-                HomeAddressTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["HisnaStevilka"].Value.ToString();
-                PostTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["Posta"].Value.ToString();
-                CityTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["City"].Value.ToString();
-                PhoneNumberTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["TelefonskaStevilka"].Value.ToString();
-                eMailTextBox.Text = ImenikDataGrid.SelectedRows[0].Cells["eMail"].Value.ToString(); 
             }
             catch (Exception ex) // If... if somethings goes wrong
             {
@@ -218,7 +206,49 @@ namespace Imenik
                 ImenikDataGrid.Rows[x].Cells[6].Value = oseba[6].ToString();
                 ImenikDataGrid.Rows[x].Cells[7].Value = oseba[7].ToString();
             }
-            con.Close();
+        }
+
+        private void Dropdown()
+        {
+            SQLiteConnection con = new SQLiteConnection("datasource=Database.db");
+            con.Open();
+            using (SQLiteCommand com = new SQLiteCommand(con))
+            { 
+                com.CommandText = "SELECT id, Name FROM imeniki";//SQL STAVEK  
+                SQLiteDataAdapter dAdapter = new SQLiteDataAdapter();
+                DataTable data = new DataTable();
+                dAdapter.SelectCommand = com;
+                dAdapter.Fill(data);
+                if(data !=null)
+                {
+                    if(data.Rows.Count > 0)
+                    {
+                        data.Columns.Add("Phonebook", typeof(string), "name");
+                        SelectPhoneBookComboBox.DataSource = data;
+                        SelectPhoneBookComboBox.ValueMember = "id";
+                        SelectPhoneBookComboBox.DisplayMember = "Phonebook";
+                        SelectPhoneBookComboBox.Enabled = true;
+                    }
+                    else if(data.Rows.Count <= 0)
+                    {
+                        SelectPhoneBookComboBox.Enabled = false;
+                        SelectPhoneBookComboBox.Text = "Nothing to display";
+                    }
+                }
+                com.Dispose();
+                con.Close();
+            }
+            Display();
+        }
+
+        private void SelectPhoneBookComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Imeniki imenik = new Imeniki();
+            PhoneBook = SelectPhoneBookComboBox.GetItemText(SelectPhoneBookComboBox.SelectedItem);
+            PhoneBook_id = Convert.ToInt32(SelectPhoneBookComboBox.GetItemText(SelectPhoneBookComboBox.SelectedValue));
+            imenik.PhoneBook = PhoneBook;
+            Display();
         }
     }
+    
 }

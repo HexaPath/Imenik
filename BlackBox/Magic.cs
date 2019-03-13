@@ -12,8 +12,12 @@ namespace BlackBox
         public int Post { get; set; }
         public string City { get; set; }
         public int PhoneNumber { get; set; }
-        public string EMailAddress { get; set; }  
+        public string EMailAddress { get; set; }
 
+        public Oseba()
+        {
+
+        }
         // Za Delete
         public Oseba(int userID)
         {
@@ -50,6 +54,10 @@ namespace BlackBox
     {
         public int PhoneBook_id { get; set; } 
         public string PhoneBook { get; set; }
+        public Imeniki()
+        {
+
+        }
 
         public Imeniki(int phonebook_id, string phonebook)
         {
@@ -85,16 +93,17 @@ namespace BlackBox
         {
             using (SQLiteCommand com = new SQLiteCommand(con))
             {
-                com.CommandText = "UPDATE osebe SET " +
-                    "(ID = '" + toUpdate.UserID + "', " +
+                com.CommandText = "UPDATE osebe SET " + 
                     "FirstName = '" + toUpdate.FirstName + "', " +
                     "LastName = '" + toUpdate.LastName + "', " +
                     "HomeAddress = '" + toUpdate.HomeAdress + "', " +
                     "Post = '" + toUpdate.Post + "', " +
                     "City = '" + toUpdate.City + "', " +
                     "PhoneNumber = '" + toUpdate.PhoneNumber + "', " +
-                    "EMailAddress = '" + toUpdate.EMailAddress + "', " +
-                    "PhoneBook_id = '" + toUpdate.PhoneBook_id + "')";  //SQL STAVEK
+                    "EMailAddress = '" + toUpdate.EMailAddress + "' " +
+
+                    "WHERE PhoneBook_id = '" + toUpdate.PhoneBook_id + "' " +
+                    "AND ID = '" + toUpdate.UserID + "'";  //SQL STAVEK
                 com.ExecuteNonQuery();
                 com.Dispose();
             }
@@ -116,8 +125,8 @@ namespace BlackBox
         {
             using (SQLiteCommand com = new SQLiteCommand(con))
             {
-                com.CommandText =   "INSERT into imeniki (ID, Name)" +
-                                    "VALUES ('"+ toAdd.PhoneBook_id + "','" + toAdd.PhoneBook +"')";//SQL STAVEK
+                com.CommandText =   "INSERT into imeniki (Name)" +
+                                    "VALUES ('" + toAdd.PhoneBook +"')";//SQL STAVEK
                 com.ExecuteNonQuery();
                 com.Dispose();
             }

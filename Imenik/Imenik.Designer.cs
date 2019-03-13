@@ -33,6 +33,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.AddPhoneBookTextBox = new System.Windows.Forms.TextBox();
             this.ImenikDataGrid = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Priimek = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HisnaStevilka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Posta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kraj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelefonskaStevilka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddPhoneBookBtn = new System.Windows.Forms.Button();
             this.PostTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,14 +61,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.ImenikiGroupBox = new System.Windows.Forms.GroupBox();
             this.UrejanjeOsebGroupBox = new System.Windows.Forms.GroupBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Priimek = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HisnaStevilka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Posta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kraj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TelefonskaStevilka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ImenikDataGrid)).BeginInit();
             this.ImenikiGroupBox.SuspendLayout();
             this.UrejanjeOsebGroupBox.SuspendLayout();
@@ -70,12 +70,14 @@
             // 
             this.SelectPhoneBookComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.SelectPhoneBookComboBox.FormattingEnabled = true;
+            this.SelectPhoneBookComboBox.Items.AddRange(new object[] {
+            "Test"});
             this.SelectPhoneBookComboBox.Location = new System.Drawing.Point(173, 10);
             this.SelectPhoneBookComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SelectPhoneBookComboBox.Name = "SelectPhoneBookComboBox";
             this.SelectPhoneBookComboBox.Size = new System.Drawing.Size(327, 37);
             this.SelectPhoneBookComboBox.TabIndex = 0;
-            this.SelectPhoneBookComboBox.SelectedIndexChanged += new System.EventHandler(this.SelectPhoneBookComboBox_SelectedIndexChanged);
+            this.SelectPhoneBookComboBox.SelectionChangeCommitted += new System.EventHandler(this.SelectPhoneBookComboBox_SelectionChangeCommitted);
             // 
             // label1
             // 
@@ -125,6 +127,61 @@
             this.ImenikDataGrid.Size = new System.Drawing.Size(1077, 449);
             this.ImenikDataGrid.TabIndex = 4;
             this.ImenikDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ImenikDataGrid_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // Ime
+            // 
+            this.Ime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Priimek
+            // 
+            this.Priimek.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Priimek.HeaderText = "Priimek";
+            this.Priimek.Name = "Priimek";
+            this.Priimek.ReadOnly = true;
+            // 
+            // HisnaStevilka
+            // 
+            this.HisnaStevilka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HisnaStevilka.HeaderText = "Hišna Številka";
+            this.HisnaStevilka.Name = "HisnaStevilka";
+            this.HisnaStevilka.ReadOnly = true;
+            // 
+            // Posta
+            // 
+            this.Posta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Posta.HeaderText = "Pošta";
+            this.Posta.Name = "Posta";
+            this.Posta.ReadOnly = true;
+            // 
+            // Kraj
+            // 
+            this.Kraj.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Kraj.HeaderText = "Kraj";
+            this.Kraj.Name = "Kraj";
+            this.Kraj.ReadOnly = true;
+            // 
+            // TelefonskaStevilka
+            // 
+            this.TelefonskaStevilka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TelefonskaStevilka.HeaderText = "Telefonska številka";
+            this.TelefonskaStevilka.Name = "TelefonskaStevilka";
+            this.TelefonskaStevilka.ReadOnly = true;
+            this.TelefonskaStevilka.Width = 145;
+            // 
+            // eMail
+            // 
+            this.eMail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.eMail.HeaderText = "eMail";
+            this.eMail.Name = "eMail";
+            this.eMail.ReadOnly = true;
             // 
             // AddPhoneBookBtn
             // 
@@ -350,61 +407,6 @@
             this.UrejanjeOsebGroupBox.TabIndex = 39;
             this.UrejanjeOsebGroupBox.TabStop = false;
             this.UrejanjeOsebGroupBox.Text = "Urejanje Oseb";
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Ime
-            // 
-            this.Ime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
-            // Priimek
-            // 
-            this.Priimek.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Priimek.HeaderText = "Priimek";
-            this.Priimek.Name = "Priimek";
-            this.Priimek.ReadOnly = true;
-            // 
-            // HisnaStevilka
-            // 
-            this.HisnaStevilka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HisnaStevilka.HeaderText = "Hišna Številka";
-            this.HisnaStevilka.Name = "HisnaStevilka";
-            this.HisnaStevilka.ReadOnly = true;
-            // 
-            // Posta
-            // 
-            this.Posta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Posta.HeaderText = "Pošta";
-            this.Posta.Name = "Posta";
-            this.Posta.ReadOnly = true;
-            // 
-            // Kraj
-            // 
-            this.Kraj.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Kraj.HeaderText = "Kraj";
-            this.Kraj.Name = "Kraj";
-            this.Kraj.ReadOnly = true;
-            // 
-            // TelefonskaStevilka
-            // 
-            this.TelefonskaStevilka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TelefonskaStevilka.HeaderText = "Telefonska številka";
-            this.TelefonskaStevilka.Name = "TelefonskaStevilka";
-            this.TelefonskaStevilka.ReadOnly = true;
-            this.TelefonskaStevilka.Width = 145;
-            // 
-            // eMail
-            // 
-            this.eMail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.eMail.HeaderText = "eMail";
-            this.eMail.Name = "eMail";
-            this.eMail.ReadOnly = true;
             // 
             // ImenikForm
             // 

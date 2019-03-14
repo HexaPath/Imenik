@@ -11,7 +11,7 @@ namespace BlackBox
         public string HomeAdress { get; set; }
         public int Post { get; set; }
         public string City { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string EMailAddress { get; set; }
 
         public Oseba()
@@ -24,7 +24,7 @@ namespace BlackBox
             UserID = userID;
         }
         // Za kreacijo nove osebe
-        public Oseba(string firstName, string lastName, string homeadress, int post, string city, int phonenumber, string emailaddress, int phonebook_id)
+        public Oseba(string firstName, string lastName, string homeadress, int post, string city, string phonenumber, string emailaddress, int phonebook_id)
         {
             PhoneBook_id = phonebook_id;
             FirstName = firstName;
@@ -36,7 +36,7 @@ namespace BlackBox
             EMailAddress = emailaddress;
         }
         // Za urejanje/izpisovanje osebe
-        public Oseba(int userID, string firstName, string lastName, string homeadress, int post, string city, int phonenumber, string emailaddress, int phonebook_id)
+        public Oseba(int userID, string firstName, string lastName, string homeadress, int post, string city, string phonenumber, string emailaddress, int phonebook_id)
         {
             PhoneBook_id = phonebook_id;
             UserID = userID;
@@ -148,7 +148,7 @@ namespace BlackBox
                 while (reader.HasRows)
                 {
                         reader.Read();
-                        toReturn = new Oseba(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetString(5), reader.GetInt32(6), reader.GetString(7), reader.GetInt32(8));
+                        toReturn = new Oseba(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetInt32(8));
                         //             Oseba(int userID, string firstName, string lastName, string homeadress, int post, string city, int phonenumber, string emailaddress, int phonebook_id)
                 }
                 com.Dispose();

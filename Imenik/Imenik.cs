@@ -23,7 +23,7 @@ namespace Imenik
         string eMailAddress = "";
         string City = "";
         int Post = 0000;
-        int PhoneNumber = 000000000;
+        string PhoneNumber = "";
 
         int action = 0;
 
@@ -96,9 +96,9 @@ namespace Imenik
                 else { City = ""; }
                 if (PhoneNumberTextBox.Text != "" || PhoneNumberTextBox.Text != null)
                 {
-                    PhoneNumber = Convert.ToInt32(PhoneNumberTextBox.Text);
+                    PhoneNumber = PhoneNumberTextBox.Text;
                 }
-                else { PhoneNumber = 000000000;}
+                else { PhoneNumber = "000000000";}
                 if (eMailTextBox.Text != "" || eMailTextBox.Text != null)
                 {
                     eMailAddress = eMailTextBox.Text;

@@ -60,50 +60,58 @@ namespace Imenik
 
         private void VpisVBazo ()
         {
-            if(action ==4)
-            { 
-                if (AddPhoneBookTextBox.Text != "" || AddPhoneBookTextBox.Text != null)
+            try
+            {
+                if (action == 4)
                 {
-                    PhoneBook = AddPhoneBookTextBox.Text;
+                    if (AddPhoneBookTextBox.Text != "" || AddPhoneBookTextBox.Text != null)
+                    {
+                        PhoneBook = AddPhoneBookTextBox.Text;
+                    }
+                    else { PhoneBook = ""; }
                 }
-                else { PhoneBook = ""; }
+                else
+                {
+                    if (NameTextBox.Text != "" || NameTextBox.Text != null)
+                    {
+                        FirstName = NameTextBox.Text;
+                    }
+                    else { FirstName = ""; }
+                    if (SurnameTextBox.Text != "" || SurnameTextBox.Text != null)
+                    {
+                        LastName = SurnameTextBox.Text;
+                    }
+                    else { LastName = ""; }
+                    if (HomeAddressTextBox.Text != "" || HomeAddressTextBox.Text != null)
+                    {
+                        HomeAdress = HomeAddressTextBox.Text;
+                    }
+                    else { HomeAdress = ""; }
+                    if (PostTextBox.Text != "" || PostTextBox.Text != null)
+                    {
+                        Post = Convert.ToInt32(PostTextBox.Text);
+                    }
+                    else { Post = 0000; }
+                    if (CityTextBox.Text != "" || CityTextBox.Text != null)
+                    {
+                        City = CityTextBox.Text;
+                    }
+                    else { City = ""; }
+                    if (PhoneNumberTextBox.Text != "" || PhoneNumberTextBox.Text != null)
+                    {
+                        PhoneNumber = PhoneNumberTextBox.Text;
+                    }
+                    else { PhoneNumber = "000000000"; }
+                    if (eMailTextBox.Text != "" || eMailTextBox.Text != null)
+                    {
+                        eMailAddress = eMailTextBox.Text;
+                    }
+                    else { eMailAddress = ""; }
+                }
             }
-            else { 
-                if (NameTextBox.Text != "" || NameTextBox.Text != null)
-                {
-                    FirstName = NameTextBox.Text;
-                }
-                else { FirstName = "";}
-                if (SurnameTextBox.Text != "" || SurnameTextBox.Text != null)
-                {
-                    LastName = SurnameTextBox.Text;
-                }
-                else { LastName = "";}
-                if (HomeAddressTextBox.Text != "" || HomeAddressTextBox.Text != null)
-                {
-                    HomeAdress = HomeAddressTextBox.Text;
-                }
-                else { HomeAdress = "";}
-                if (PostTextBox.Text != "" || PostTextBox.Text != null)
-                {
-                    Post = Convert.ToInt32(PostTextBox.Text);
-                }
-                else { Post = 0000; }
-                if (CityTextBox.Text != "" || CityTextBox.Text != null)
-                {
-                    City = CityTextBox.Text;
-                }
-                else { City = ""; }
-                if (PhoneNumberTextBox.Text != "" || PhoneNumberTextBox.Text != null)
-                {
-                    PhoneNumber = PhoneNumberTextBox.Text;
-                }
-                else { PhoneNumber = "000000000";}
-                if (eMailTextBox.Text != "" || eMailTextBox.Text != null)
-                {
-                    eMailAddress = eMailTextBox.Text;
-                }
-                else { eMailAddress = "";}
+            catch (Exception ex) // If... if somethings goes wrong
+            {
+                MessageBox.Show(Convert.ToString(ex));
             }
 
             Oseba newOseba = new Oseba(UserID);
@@ -191,58 +199,71 @@ namespace Imenik
 
         void Display() //Refresh Function
         {
-            SQLiteConnection con = new SQLiteConnection("datasource=Database.db");
-            con.Open();
-            DataTable table = new DataTable();
-            SQLiteDataAdapter adptr = new SQLiteDataAdapter("SELECT * FROM  osebe WHERE PhoneBook_id = '"+ PhoneBook_id+"'", con);
-            adptr.Fill(table);
-            ImenikDataGrid.Rows.Clear();
-
-            foreach (DataRow oseba in table.Rows)    //  Instant Output of Input :D
+            try
             {
-                int x = ImenikDataGrid.Rows.Add();
-                ImenikDataGrid.Rows[x].Cells[0].Value = oseba[0].ToString();
-                ImenikDataGrid.Rows[x].Cells[1].Value = oseba[1].ToString();
-                ImenikDataGrid.Rows[x].Cells[2].Value = oseba[2].ToString();
-                ImenikDataGrid.Rows[x].Cells[3].Value = oseba[3].ToString();
-                ImenikDataGrid.Rows[x].Cells[4].Value = oseba[4].ToString();
-                ImenikDataGrid.Rows[x].Cells[5].Value = oseba[5].ToString();
-                ImenikDataGrid.Rows[x].Cells[6].Value = oseba[6].ToString();
-                ImenikDataGrid.Rows[x].Cells[7].Value = oseba[7].ToString();
+                SQLiteConnection con = new SQLiteConnection("datasource=Database.db");
+                con.Open();
+                DataTable table = new DataTable();
+                SQLiteDataAdapter adptr = new SQLiteDataAdapter("SELECT * FROM  osebe WHERE PhoneBook_id = '" + PhoneBook_id + "'", con);
+                adptr.Fill(table);
+                ImenikDataGrid.Rows.Clear();
+
+                foreach (DataRow oseba in table.Rows)    //  Instant Output of Input :D
+                {
+                    int x = ImenikDataGrid.Rows.Add();
+                    ImenikDataGrid.Rows[x].Cells[0].Value = oseba[0].ToString();
+                    ImenikDataGrid.Rows[x].Cells[1].Value = oseba[1].ToString();
+                    ImenikDataGrid.Rows[x].Cells[2].Value = oseba[2].ToString();
+                    ImenikDataGrid.Rows[x].Cells[3].Value = oseba[3].ToString();
+                    ImenikDataGrid.Rows[x].Cells[4].Value = oseba[4].ToString();
+                    ImenikDataGrid.Rows[x].Cells[5].Value = oseba[5].ToString();
+                    ImenikDataGrid.Rows[x].Cells[6].Value = oseba[6].ToString();
+                    ImenikDataGrid.Rows[x].Cells[7].Value = oseba[7].ToString();
+                }
+            }
+            catch (Exception ex) // If... if somethings goes wrong
+            {
+                MessageBox.Show(Convert.ToString(ex));
             }
         }
 
         private void Dropdown()
         {
-            SQLiteConnection con = new SQLiteConnection("datasource=Database.db");
-            con.Open();
-            using (SQLiteCommand com = new SQLiteCommand(con))
-            { 
-                com.CommandText = "SELECT id, Name FROM imeniki";//SQL STAVEK  
-                SQLiteDataAdapter dAdapter = new SQLiteDataAdapter();
-                DataTable data = new DataTable();
-                dAdapter.SelectCommand = com;
-                dAdapter.Fill(data);
-                if(data !=null)
+            try { 
+                SQLiteConnection con = new SQLiteConnection("datasource=Database.db");
+                con.Open();
+                using (SQLiteCommand com = new SQLiteCommand(con))
                 {
-                    if(data.Rows.Count > 0)
+                    com.CommandText = "SELECT id, Name FROM imeniki";//SQL STAVEK  
+                    SQLiteDataAdapter dAdapter = new SQLiteDataAdapter();
+                    DataTable data = new DataTable();
+                    dAdapter.SelectCommand = com;
+                    dAdapter.Fill(data);
+                    if (data != null)
                     {
-                        data.Columns.Add("Phonebook", typeof(string), "name");
-                        SelectPhoneBookComboBox.DataSource = data;
-                        SelectPhoneBookComboBox.ValueMember = "id";
-                        SelectPhoneBookComboBox.DisplayMember = "Phonebook";
-                        SelectPhoneBookComboBox.Enabled = true;
+                        if (data.Rows.Count > 0)
+                        {
+                            data.Columns.Add("Phonebook", typeof(string), "name");
+                            SelectPhoneBookComboBox.DataSource = data;
+                            SelectPhoneBookComboBox.ValueMember = "id";
+                            SelectPhoneBookComboBox.DisplayMember = "Phonebook";
+                            SelectPhoneBookComboBox.Enabled = true;
+                        }
+                        else if (data.Rows.Count <= 0)
+                        {
+                            SelectPhoneBookComboBox.Enabled = false;
+                            SelectPhoneBookComboBox.Text = "Nothing to display";
+                        }
                     }
-                    else if(data.Rows.Count <= 0)
-                    {
-                        SelectPhoneBookComboBox.Enabled = false;
-                        SelectPhoneBookComboBox.Text = "Nothing to display";
-                    }
+                    com.Dispose();
+                    con.Close();
                 }
-                com.Dispose();
-                con.Close();
+                Display();
             }
-            Display();
+            catch (Exception ex) // If... if somethings goes wrong
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
         }
 
         private void SelectPhoneBookComboBox_SelectionChangeCommitted(object sender, EventArgs e)

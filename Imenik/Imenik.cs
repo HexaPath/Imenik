@@ -15,7 +15,7 @@ namespace Imenik
         }
 
         int UserID = 0; // dobi od izbranega objekta 
-        int PhoneBook_id = -1; // dobi iz globlane spremenljivke, ki pove, ker id phonebook je trenutno odprt 
+        int PhoneBook_id = 0; // dobi iz globlane spremenljivke, ki pove, ker id phonebook je trenutno odprt 
         string PhoneBook = "";// dobi iz baze
         string FirstName = "";
         string LastName = "";
@@ -118,6 +118,7 @@ namespace Imenik
                     Database DodajOsebo = new Database();
                     if(DodajOsebo.AddOseba(newOseba2) == true)
                     {
+                        Display();
                         //MessageBox.Show("Entery Successful!");
                     }
                     // stavek za klic insert funkcije baze
@@ -126,6 +127,7 @@ namespace Imenik
                     Database UrediOsebo = new Database();
                     if(UrediOsebo.UpdateOseba(newOseba1) == true)
                     {
+                        Display();
                         //MessageBox.Show("Edit Successful!");
                     }
                     // stavek za klic update funkcije baze
@@ -134,6 +136,7 @@ namespace Imenik
                     Database izbrisOsebe = new Database();
                     if (izbrisOsebe.DeleteOseba(newOseba) == true)
                     {
+                        Display();
                         //MessageBox.Show("Removal Successful!");
                     }
                     break;
@@ -141,6 +144,7 @@ namespace Imenik
                     Database DodajImenik = new Database();
                     if(DodajImenik.AddImenik(newImenik) == true)
                     {
+                        Dropdown();
                         //MessageBox.Show("Entery Successful!");
                     }
                     break;
